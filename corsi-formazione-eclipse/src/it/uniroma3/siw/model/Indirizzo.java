@@ -22,7 +22,7 @@ public class Indirizzo {
 	@Column(nullable = false)
 	private String comune;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String cap;
 	
 	private String provincia;

@@ -1,12 +1,15 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,7 +19,7 @@ public class Allievo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String matricola;
 
 	@Column(nullable = false)
@@ -33,8 +36,13 @@ public class Allievo {
 	private String email;
 
 	/* Allievo parte proprietaria */
+	/* Essendo l'applicazione per un ente che eroga corsi di formazione, la lettura di uno o più allievi
+	 * è correlata alla lettura dei corsi a cui essi sono iscritti per cui è conveniente accedervi contemporaneamente */
+	@ManyToMany(mappedBy = "allievi", fetch = FetchType.EAGER)
+	private List<Corso> corsi;
+	
 	@ManyToOne
-	private Corso corso;
+	private Societa societa;
 
 	public Long getId() {
 		return this.id;

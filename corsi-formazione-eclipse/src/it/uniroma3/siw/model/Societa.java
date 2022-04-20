@@ -1,14 +1,10 @@
 package it.uniroma3.siw.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,10 +18,6 @@ public class Societa {
 	private String ragioneSociale;
 	
 	private String numeroTelefono;
-	
-	@OneToMany
-	@JoinColumn(name = "societa_id") // Forzo la FK e non la join table
-	private List<Allievo> dipendenti;
 	
 	@OneToOne
 	private Indirizzo indirizzo;

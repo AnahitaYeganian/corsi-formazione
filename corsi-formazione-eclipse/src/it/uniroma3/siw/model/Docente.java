@@ -27,7 +27,7 @@ public class Docente {
 	
 	private String luogoNascita;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String partitaIVA;
 	
 	/* Docente parte inversa */
