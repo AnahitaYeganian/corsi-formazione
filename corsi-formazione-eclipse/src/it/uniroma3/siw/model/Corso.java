@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,8 @@ public class Corso {
 	private Integer durataInMesi;
 	
 	/* Corso parte proprietaria */
-	@ManyToOne
+	/*Cascade: quando viene inserito nel db un corso vorrei che fosse inserito nel db anche il docente che lo tiene */
+	@ManyToOne(cascade= {CascadeType.PERSIST})
 	private Docente docente;
 	
 	/* Corso parte inversa */

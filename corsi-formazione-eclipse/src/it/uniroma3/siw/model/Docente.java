@@ -31,6 +31,7 @@ public class Docente {
 	private String partitaIVA;
 	
 	/* Docente parte inversa */
+	/* Fetch: il caricamento di un docente è correlato al caricamento dei corsi che tiene per cui è conveniente caricarli subito contemporaneamente */
 	@OneToMany(mappedBy = "docente")
 	private List<Corso> corsi;
 	

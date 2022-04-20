@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,8 @@ public class Societa {
 	
 	private String numeroTelefono;
 	
-	@OneToOne
+	/* Cascade: quando viene inserita/eliminata nel db una societa vorrei che fosse inserito/eliminato nel db anche il suo indirizzo */
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	private Indirizzo indirizzo;
 
 	public Long getId() {
@@ -56,6 +58,5 @@ public class Societa {
 		Societa societa = (Societa)obj;
 		return this.getId().equals(societa.getId());
 	}
-	
 	
 }

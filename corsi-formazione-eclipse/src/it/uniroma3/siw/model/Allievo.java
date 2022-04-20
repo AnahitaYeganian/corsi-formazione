@@ -3,9 +3,9 @@ package it.uniroma3.siw.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,12 +36,11 @@ public class Allievo {
 	private String email;
 
 	/* Allievo parte proprietaria */
-	/* Essendo l'applicazione per un ente che eroga corsi di formazione, la lettura di uno o più allievi
-	 * è correlata alla lettura dei corsi a cui essi sono iscritti per cui è conveniente accedervi contemporaneamente */
-	@ManyToMany(mappedBy = "allievi", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "allievi")
 	private List<Corso> corsi;
 	
-	@ManyToOne
+	/* Cascade: Quando viene inserito un Allievo nel db vorrei che fosse inserita nel db anche la societa per cui è dipendente */
+	@ManyToOne(cascade= {CascadeType.PERSIST})
 	private Societa societa;
 
 	public Long getId() {
