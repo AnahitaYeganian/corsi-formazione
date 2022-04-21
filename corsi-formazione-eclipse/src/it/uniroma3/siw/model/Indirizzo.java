@@ -17,7 +17,7 @@ public class Indirizzo {
 	private String via;
 	
 	@Column(nullable = false)
-	private Integer numeroCivico;
+	private String numeroCivico;
 	
 	@Column(nullable = false)
 	private String comune;
@@ -43,11 +43,11 @@ public class Indirizzo {
 		this.via = via;
 	}
 
-	public Integer getNumeroCivico() {
+	public String getNumeroCivico() {
 		return this.numeroCivico;
 	}
 
-	public void setNumeroCivico(Integer numeroCivico) {
+	public void setNumeroCivico(String numeroCivico) {
 		this.numeroCivico = numeroCivico;
 	}
 
